@@ -16,7 +16,7 @@ def main():
     # Load analysis config file
     config_file = 'configs/analysis.config.yaml'
     with open(config_file, 'r') as in_h:
-        config_dict = yaml.load(in_h)
+        config_dict = yaml.safe_load(in_h)
 
     # Args
     input_pattern = os.path.join(config_dict['finemapping_output_dir'], 'tmp/filtered_input/*.json.gz')
