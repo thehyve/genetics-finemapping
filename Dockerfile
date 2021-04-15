@@ -1,7 +1,10 @@
 FROM continuumio/miniconda:4.6.14
 
 # Create non-root user 
-RUN useradd -ms /bin/bash otg
+ARG UID
+ARG GID
+RUN groupadd -g $GID -o otg
+RUN useradd -m -u $UID -g $GID -o -s /bin/bash
 
 # Do everything that requires root user
 # Install OpenJDK-8 (as root)
@@ -54,6 +57,7 @@ COPY ./ /home/otg/finemapping
 
 # Make all files in finemapping owned by the non-root user
 USER root
+RUN mkdir /home/otg/finemapping/configs
 RUN chown -R otg:otg /home/otg/finemapping
 
 # Run container as non-root user
