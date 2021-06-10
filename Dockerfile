@@ -4,7 +4,7 @@ FROM continuumio/miniconda:4.6.14
 ARG UID
 ARG GID
 RUN groupadd -g $GID -o otg
-RUN useradd -m -u $UID -g $GID -o -s /bin/bash
+RUN useradd -m -u $UID -g $GID -o -s /bin/bash otg
 
 # Do everything that requires root user
 # Install OpenJDK-8 (as root)
