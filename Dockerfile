@@ -57,7 +57,6 @@ COPY ./ /home/otg/finemapping
 
 # Make all files in finemapping owned by the non-root user
 USER root
-RUN mkdir /home/otg/finemapping/configs
 RUN chown -R otg:otg /home/otg/finemapping
 
 # Run container as non-root user
